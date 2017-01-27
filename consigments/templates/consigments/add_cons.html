@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Add consigment</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <table class="table table_add" style="border-style: solid; border-width: 2px;">
+      <thead class="thead-inverse">
+        <tr>
+          <td rowspan="2">Letter code</td>
+          <td colspan="3">Letter</td>
+          <td colspan="2">Email</td>
+          <td rowspan="2">Business area</td>
+          <td rowspan="2">Application</td>
+          <td rowspan="2">Journey</td>
+          <td rowspan="2">VI</td>
+          <td rowspan="2">Env</td>
+          <td rowspan="2">Comment</td>
+        </tr>
+        <tr>
+          <td class="table_center">BG</td>
+          <td>SG</td>
+          <td>SE</td>
+          <td>BG</td>
+          <td>SE</td>
+        </tr>
+      </thead>
+      <tbody class="center">
+          <tr>
+            <td>
+              {{ form.letter_code.errors }}
+              {{ form.letter_code }}
+            </td>
+            <td>
+              {{ form.letter_BG.errors }}
+              {{ form.letter_BG }}
+            </td>
+            <td>
+              {{ form.letter_SG.errors }}
+              {{ form.letter_SG }}
+            </td>
+            <td>
+              {{ form.letter_SE.errors }}
+              {{ form.letter_SE }}
+            </td>
+            <td>
+              {{ form.email_BG.errors }}
+              {{ form.email_BG }}</td>
+            <td>
+              {{ form.email_SE.errors }}
+              {{ form.email_SE }}
+            </td>
+            <td>
+              {{ form.business_area.errors }}
+              {{ form.business_area }}
+            </td>
+            <td>
+              {{ form.application.errors }}
+              {{ form.application }}
+            </td>
+            <td>
+              {{ form.journey.errors }}
+              {{ form.journey }}
+            </td>
+            <td>
+              {{ form.vi.errors }}
+              {{ form.vi }}
+            </td>
+            <td>
+              {{ form.environment.errors }}
+              {{ form.environment }}
+            </td>
+            <td>
+              {{ form.comments.errors }}
+              {{ form.comments }}
+            </td>
+          </tr>
+      </tbody>
+    </table>
+    <button type="submit" class="save btn btn-default">Save</button>
+  </form>
+{% endblock %}

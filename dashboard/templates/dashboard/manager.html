@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-3" >
+    <h1 style="text-align:center;">New CIR's</h1>
+    <table class="table table-bordered table-hover table-striped">
+      <tr>
+        <th>Name</th><th>Raised</th>
+      </tr>
+      {% for cir in cirs %}
+        <tr>
+          <td>{{ cir.name_of_change }}</td><td>{{ cir.raised|date }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <div class="col-md-9">
+    <h1 style="text-align:center;">Started in Clockwork</h1>
+    <table class="table table-bordered table-hover table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Phase</th>
+        <th>Start</th>
+        <th>End</th>
+      </tr>
+      {% for clock in clockwork %}
+        <tr>
+          <td>{{ clock.name_of_change }}</td>
+          <td>{{ clock.summary|truncatechars:100 }}</td>
+          <td>{{ clock.status }}</td>
+          <td>{{ clock.raised|date }}</td>
+          <td>{{ clock.delivery_date }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3" >
+    <h1 style="text-align:center;">Your people</h1>
+    <table class="table table-bordered table-hover table-striped">
+      <tr>
+        <th>Name</th><th>Points</th>
+      </tr>
+      {% for peop in people %}
+        <tr>
+          <td>{{ peop.allocated }}</td><td>{{ peop.total_points }}({{ peop.count }})</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div class="col-md-9" >
+    <h1 style="text-align:center;">Most recent updates</h1>
+    <table class="table table-bordered table-hover table-striped">
+      <tr>
+        <th>BRS num</th>
+        <th>Name</th>
+        <th>Owner</th>
+        <th>Update</th>
+        <th>Date</th>
+      </tr>
+      {% for upd in updates %}
+        <tr>
+          <td>{{ upd.change }}</td>
+          <td>{{ upd.status }}</td>
+          <td>{{ upd.name }}</td>
+          <td>{{ upd.what }}</td>
+          <td>{{ upd.when }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock %}

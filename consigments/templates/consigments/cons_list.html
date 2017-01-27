@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dropdown">
+<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Business areas
+  <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="{% url 'cons_list' %}">All</a></li>
+      {% for area in areas %}
+        <li><a href="{% url 'cons_list' %}?filters={{ area.name }}{% if request.GET.order != None %}&order={{ request.GET.order }}{% endif %}">{{ area.name }}</a></li>
+      {% endfor %}
+    </ul>
+</div>
+<table class="table table-bordered table-hover table-striped">
+  <thead class="thead-inverse">
+    <tr>
+      <td rowspan="2"><a href="
+        {% url 'cons_list' %}?order={% if request.GET.order == '-letter_code' %}letter_code{% else %}-letter_code{% endif %}{% if request.GET.filters != None %}&filters={{ request.GET.filters }}{% endif %}">Letter code</a></td>
+      <td colspan="3">Letter</td>
+      <td colspan="2">Email</td>
+      <td rowspan="2">Business area</td>
+      <td rowspan="2">Application</td>
+      <td rowspan="2">Journey</td>
+      <td rowspan="2">VI</td>
+      <td rowspan="2">Env</td>
+      <td rowspan="2">Comment</td>
+      <td rowspan="2">Modified by</td>
+      <td rowspan="2">Modified</td>
+    </tr>
+    <tr>
+      <td class="table_center">BG</td>
+      <td>SG</td>
+      <td>SE</td>
+      <td>BG</td>
+      <td>SE</td>
+    </tr>
+  </thead>
+  <tbody>
+  {% for con in cons %}
+        <tr>
+          <td><a href="{% url 'edit_cons' pk=con.pk %}">{{ con.letter_code }}</a></td>
+          <td class="table_center">{% if con.letter_BG %} X {% endif %}</td>
+          <td class="table_center">{% if con.letter_SG %} X {% endif %}</td>
+          <td class="table_center">{% if con.letter_SE %} X {% endif %}</td>
+          <td class="table_center">{% if con.email_BG %} X {% endif %}</td>
+          <td class="table_center">{% if con.email_SE %} X {% endif %}</td>
+          <td>{{ con.business_area }}</td>
+          <td>{{ con.application }}</td>
+          <td>{{ con.journey }}</td>
+          <td>{{ con.get_vi_display }}</td>
+          <td>{{ con.get_environment_display }}</td>
+          <td style="width: 200px;">{{ con.comments|truncatechars:20 }}</td>
+          <td>{{ con.modified_by }}</td>
+          <td>{{ con.modified_date }}</td>
+        </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'consigments/base.html' %}
+
+{% block content %}
+  <h1>Add consigment</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <table class="table table-stripped table-hover">
+      <tbody>
+        <tr class="tr_bottom">
+          <td rowspan="2">Letter code</td>
+          <td colspan="3">Letter</td>
+          <td colspan="2">Email</td>
+          <td rowspan="2">Application</td>
+          <td rowspan="2">Journey</td>
+          <td rowspan="2">VI</td>
+          <td rowspan="2">Env</td>
+          <td rowspan="2">Comment</td>
+        </tr>
+        <tr>
+          <td class="table_center">BG</td>
+          <td>SG</td>
+          <td>SE</td>
+          <td>BG</td>
+          <td>SE</td>
+        </tr>
+          <tr>
+            <td>
+              {{ form.letter_code.errors }}
+              <label for="{{ form.letter_code.id_for_label }}">Letter code:</label>{{ form.letter_code }}
+            </td>
+            <td class="table_center">
+              {{ form.letter_BG.errors }}
+              <label for="{{ form.letter_BG.id_for_label }}">BG</label>{{ form.letter_BG }}
+            </td>
+            <td class="table_center">
+              {{ form.letter_SG.errors }}
+              <label for="{{ form.letter_SG.id_for_label }}">SG</label>{{ form.letter_SG }}
+            </td>
+            <td class="table_center">
+              {{ form.letter_SE.errors }}
+              <label for="{{ form.letter_SE.id_for_label }}">SE</label>{{ form.letter_SE }}
+            </td>
+            <td class="table_center">
+              {{ form.email_BG.errors }}
+              <label for="{{ form.email_BG.id_for_label }}">BG</label>{{ form.email_BG }}</td>
+            <td class="table_center">
+              {{ form.email_SE.errors }}
+              <label for="{{ form.email_SE.id_for_label }}">SE</label>{{ form.email_SE }}
+            </td>
+            <td>
+              {{ form.application.errors }}
+              <label for="{{ form.application.id_for_label }}">Application</label>{{ form.application }}
+            </td>
+            <td>
+              {{ form.journey.errors }}
+              <label for="{{ form.journey.id_for_label }}">Journey</label>{{ form.journey }}
+            </td>
+            <td>
+              {{ form.vi.errors }}
+              <label for="{{ form.vi.id_for_label }}">VI</label>{{ form.vi }}
+            </td>
+            <td>
+              {{ form.environment.errors }}
+              <label for="{{ form.environment.id_for_label }}">Environment</label>{{ form.environment }}
+            </td>
+            <td>
+              {{ form.comments.errors }}
+              <label for="{{ form.comments.id_for_label }}">Comments</label>{{ form.comments }}
+            </td>
+          </tr>
+      </tbody>
+    </table>
+    <button type="submit" class="save btn btn-default">Save</button>
+  </form>
+{% endblock %}

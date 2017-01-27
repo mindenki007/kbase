@@ -1,0 +1,25 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}">
+        <script src="{% static 'jquery/js/jquery-3.1.1.min.js' %}"></script>
+        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}" />
+        <title>BG Knowladge Base</title>
+    </head>
+    <body>
+        <div class="page-header">
+            <!-- <a href="{% url 'add_cons' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a> -->
+            <!-- <h1 style="text-align:center">{{ user.username }}</h1> -->
+            <h1><a href="/">BG Knowladge Base</a></h1>
+        </div>
+        <div class="content container-fluid">
+          <div class="row">
+            {% block content %}
+            {% endblock %}
+          </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+{% extends 'consigments/base.html' %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+<table class="table table-stripped table-hover">
+  <tbody>
+
+    <tr class="tr_bottom">
+      <td rowspan="2">Letter code</td>
+      <td colspan="3">Letter</td>
+      <td colspan="2">Email</td>
+      <td rowspan="2">Application</td>
+      <td rowspan="2">Journey</td>
+      <td rowspan="2">VI</td>
+      <td rowspan="2">Env</td>
+      <td rowspan="2">Comment</td>
+      <td rowspan="2">Modified by</td>
+      <td rowspan="2">Modified</td>
+    </tr>
+    <tr>
+      <td class="table_center">BG</td>
+      <td>SG</td>
+      <td>SE</td>
+      <td>BG</td>
+      <td>SE</td>
+    </tr>
+    {% render_table table %}
+  {% for con in cons %}
+        <tr>
+          <td><a href="#">{{ con.letter_code }}</a></td>
+          <td class="table_center">{% if con.letter_BG %} X {% endif %}</td>
+          <td class="table_center">{% if con.letter_SG %} X {% endif %}</td>
+          <td class="table_center">{% if con.letter_SE %} X {% endif %}</td>
+          <td class="table_center">{% if con.email_BG %} X {% endif %}</td>
+          <td class="table_center">{% if con.email_SE %} X {% endif %}</td>
+          <td>{{ con.application }}</td>
+          <td>{{ con.journey }}</td>
+          <td>{{ con.get_vi_display }}</td>
+          <td>{{ con.get_environment_display }}</td>
+          <td style="width: 200px;">{{ con.comments }}</td>
+          <td>{{ con.modified_by }}</td>
+          <td>{{ con.modified_date }}</td>
+        </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
