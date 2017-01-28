@@ -52,7 +52,7 @@ class Changes(models.Model):
     allocated = models.CharField(max_length=40)
     point = models.IntegerField()
     STATUS = (
-        ('op', 'Open'),
+        ('op', 'Open'), ##it need the full name each side
         ('st', 'Started'),
         ('im', 'Implemented'),
         ('ab', 'Abadonded'),
