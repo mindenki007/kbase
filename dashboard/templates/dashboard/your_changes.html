@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block header %}{{ name }}'s changes{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-bordered table-hover table-striped your-changes">
+            <tr>
+                <th>Name</th>
+                <th>BRS num</th>
+                <th>Author</th>
+                <th>Author Email</th>
+                <th>Contact</th>
+                <th>Summary</th>		
+                <th>Delivery Date</th>
+                <th>Channels</th>
+                <th>Brands</th>
+                <th>Business Area</th>
+                <th>Allocated Date</th>
+                <th>Allocated</th>
+                <th>Point</th>
+                <th>Status</th>
+                <th>Raised</th>
+            </tr>
+            {% for row in changes %}
+            	<tr>
+            		<td>{{ row.name_of_change }}</td>
+                    <td>{{ row.BRS_num }}</td>
+                    <td>{{ row.author }}</td>
+                    <td>{{ row.author_email_address }}</td>
+                    <td>{{ row.contact }}</td>
+                    <td>{{ row.summary|truncatechars:100 }}</td>		
+                    <td>{{ row.delivery_date }}</td>
+                    <td>{{ row.channels }}</td>
+                    <td>{{ row.brands }}</td>
+                    <td>{{ row.business_area }}</td>
+                    <td>{{ row.allocated_date }}</td>
+                    <td>{{ row.allocated }}</td>
+                    <td>{{ row.point }}</td>
+                    <td>{{ row.status }}</td>
+                    <td>{{ row.raised }}</td>
+            	</tr>
+           {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

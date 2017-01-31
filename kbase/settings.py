@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -25,8 +26,9 @@ SECRET_KEY = 'p*j*(tw=ac5yr2ok+gkd@27*ybyc4lraqxj6^lhb*v%hm!x%sd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    '1qbznxit.apps.lair.io',
+]
 
 # Application definition
 
@@ -44,13 +46,16 @@ INSTALLED_APPS = [
     'tinymce',
 ]
 
-TINYMCE_JS_URL = os.path.join(BASE_DIR, "static/tiny_mce")
+TINYMCE_JS_URL = os.path.join(PROJECT_ROOT, "staticfiles/tiny_mce/tiny_mce_src.js")
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table contextmenu paste code",
-    'theme': "advanced",
+    'theme': "simple",
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,
 }
+
+TINYMCE_SPELLCHECKER = False
+
 TINYMCE_COMPRESSOR = True
 
 MIDDLEWARE = [
@@ -85,31 +90,14 @@ WSGI_APPLICATION = 'kbase.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-'''
+
 DATABASES = {
     'default': {
-        'ENGINE': 'sqlserver_ado',
-        'NAME': 'kbase',
-        'USER': 'fzsibrek',
-        'PASSWORD': 'Kihaennem19',
-        'HOST': r'WINDOWS-6OV2KNH\SQLEXPRESS',
-        'OPTIONS': {
-            'provider': 'SQLOLEDB',
-            'use_legacy_date_field': 'True'
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'kbase',
-        'USER': 'postgres',
-        'PASSWORD': 'Kihaennem19',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+
 
 
 # Password validation
@@ -149,6 +137,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+STATIC_ROOT = '/staticfiles/'
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(PROJECT_ROOT, 'staticfiles'),
+)
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')

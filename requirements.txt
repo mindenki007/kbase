@@ -1,5 +1,9 @@
+appdirs==1.4.0
 Django==1.10.4
 django-bootstrap==0.2.4
 django-tinymce==2.4.0
+packaging==16.8
 psycopg2==2.6.2
-pypiwin32==219
+pyparsing==2.1.10
+six==1.10.0
+whitenoise==3.3.0

@@ -2,21 +2,36 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}">
+        <!-- <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}"> -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="//fonts.googleapis.com/css?family=Molengo&subset=latin,latin-ext" rel="stylesheet" type="text/css">
         <script src="{% static 'jquery/js/jquery-3.1.1.min.js' %}"></script>
         <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}" />
-        <title>BG Knowladge Base test</title>
+        <title>BG</title>
     </head>
     <body>
-        <div class="page-header">
-            <!-- <a href="{% url 'add_cons' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a> -->
-            <!-- <h1 style="text-align:center">{{ user.username }}</h1> -->
-            <h1><a href="/">BG Knowladge Base</a></h1>
+        <div class="row header">
+            <div class="col-md-4" >
+            	<h1><a href="/">BG</a></h1>
+            </div>
+            <div class="col-md-4" >
+                <h1 style="text-align:center">{% block header %}{% endblock %}</h1>
+            </div>
+            <div class="col-md-4" style="text-align:right;">
+                <p>{{ user.username }} / <a href="#">Logout</a></p>
+            </div>            
         </div>
         <div class="content container-fluid">
-          <div class="row">
+            <ul class="nav nav-pills">
+                <li><a href="{{ request.META.HTTP_REFERER }}">Prev page</a></li>
+                <li><a href="{% url 'cons_list' %}">Consigments list</a></li>
+                <li><a href="{% url 'tech_dash' %}">Technicians dashboard</a></li>
+                <li><a href="{% url 'manager_dash' %}">Managers dashboard</a></li>
+			</ul>
+          <div class="row bl-content">
             {% block content %}
             {% endblock %}
           </div>
