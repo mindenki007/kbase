@@ -21,7 +21,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('consigments.urls')),
     url(r'', include('dashboard.urls')),
-    url(r'^tinymce/', include('tinymce.urls')),
+    url(r'', include('glob_obj.urls')),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^accounts/login/$', views.login, name='login'),
     url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
 ]

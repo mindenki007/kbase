@@ -22,3 +22,4 @@ class ConsigmentForm(forms.ModelForm):
 
 class FilterAreaForm(forms.Form):
     areas = forms.ModelChoiceField(queryset=Areas.objects.all(), required=False)
+

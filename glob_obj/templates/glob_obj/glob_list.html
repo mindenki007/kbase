@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block header %}
+Global Objects
+{% endblock %}
+
+{% block content %}
+<div class="dropdown">
+<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Category
+  <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      {% for cat in cats %}
+        <li>{{ cat.name }}</li>
+      {% endfor %}
+    </ul>
+    <form method="get" action="/results/" class="navbar-form pull-right">
+        <input type="text" id="searchBox" class="input-medium search-query" name="q" placeholder="Search">
+        <input type="submit" class="btn" value="Search" >
+    </form>
+</div>
+<table class="table table-bordered table-hover table-striped">
+  <thead class="thead-inverse">
+    <tr>
+        <th>Name</th>
+        <th>English</th>
+        <th>Welsh</th>
+        <th>Comments</th>
+        <th>Category</th>
+        <th>Modified</th>
+        <th>Modified By</th>        
+    </tr>
+  </thead>
+  <tbody>
+  {% for glob in glob_list %}
+        <tr>
+          <td>{{ glob.name|safe }}</td>
+          <td>{{ glob.eng|safe }}</td>
+          <td>{{ glob.welsh|safe }}</td>
+          <td>{{ glob.comments|safe }}</td>
+          <td>{{ glob.category|safe }}</td>
+          <td>{{ glob.modified }}</td>
+          <td>{{ glob.modified_by }}</td>
+        </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

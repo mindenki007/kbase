@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-from tinymce import models as tinymce_models
+from ckeditor.fields import RichTextField
 # Create your models here.
 
 class Applications(models.Model):
@@ -42,7 +42,7 @@ class Consigments(models.Model):
         ('H', 'HP'),
     )
     environment = models.CharField(max_length=1, choices = ENVIRONMENT_CH, verbose_name=u'Environment')
-    comments = tinymce_models.HTMLField(blank=True, null=True)#models.TextField(verbose_name=u'Comments', blank=True, null=True)
+    comments = RichTextField(blank=True, null=True)#models.TextField(verbose_name=u'Comments', blank=True, null=True)
     modified_by = models.CharField(max_length=30, verbose_name=u'Modified by')
     modified_date = models.DateTimeField(blank=True, null=True, editable=False)
 

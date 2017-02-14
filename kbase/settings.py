@@ -42,21 +42,10 @@ INSTALLED_APPS = [
 
     'consigments',
     'dashboard',
-
-    'tinymce',
+    'glob_obj',
+    
+    'ckeditor',
 ]
-
-TINYMCE_JS_URL = os.path.join(PROJECT_ROOT, "staticfiles/tiny_mce/tiny_mce_src.js")
-TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table contextmenu paste code",
-    'theme': "simple",
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 10,
-}
-
-TINYMCE_SPELLCHECKER = False
-
-TINYMCE_COMPRESSOR = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -133,17 +122,16 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+CKEDITOR_UPLOAD_PATH = '/uploads/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_ROOT = '/staticfiles/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
-    os.path.join(PROJECT_ROOT, 'staticfiles'),
 )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

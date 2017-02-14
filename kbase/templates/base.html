@@ -1,12 +1,12 @@
-{% load static from staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <!-- <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
         <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}"> -->
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href="//fonts.googleapis.com/css?family=Molengo&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+        <link href="//fonts.googleapis.com/css?family=Molengo&subset=latin,latin-ext" rel="stylesheet" type="text/css"/>
         <script src="{% static 'jquery/js/jquery-3.1.1.min.js' %}"></script>
         <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}" />
@@ -30,6 +30,7 @@
                 <li><a href="{% url 'cons_list' %}">Consigments list</a></li>
                 <li><a href="{% url 'tech_dash' %}">Technicians dashboard</a></li>
                 <li><a href="{% url 'manager_dash' %}">Managers dashboard</a></li>
+                <li><a href="{% url 'glob_list' %}">Global objects</a></li>
 			</ul>
           <div class="row bl-content">
             {% block content %}
